@@ -18,7 +18,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class FlexchatAppComponent {
   
   messages: FirebaseListObservable<any[]>;
-  limitSubject = new BehaviorSubject(null);
+  limitSubject = new BehaviorSubject<number>(2);
   // limitSubject = new Subject<number>();
   
   constructor(af: AngularFire) {
