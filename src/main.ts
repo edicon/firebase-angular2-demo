@@ -9,5 +9,5 @@ if (environment.production) {
 
 bootstrap(FlexchatAppComponent, [
   FIREBASE_PROVIDERS,
-  defaultFirebase('https://flexchat.firebaseio.com/')
+  defaultFirebase('https://vivid-torch-3052.firebaseio.com/')
 ]);

@@ -3,6 +3,7 @@ import { FlexchatMessageComponent } from './flexchat-message'
 import { InputBarComponent } from './input-bar';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   moduleId: module.id,
@@ -17,7 +18,8 @@ import { Subject } from 'rxjs/Subject';
 export class FlexchatAppComponent {
   
   messages: FirebaseListObservable<any[]>;
-  limitSubject = new Subject<number>();
+  limitSubject = new BehaviorSubject(null);
+  // limitSubject = new Subject<number>();
   
   constructor(af: AngularFire) {
     this.messages = af.database.list('/messages', {
