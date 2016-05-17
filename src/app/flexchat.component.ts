@@ -5,7 +5,6 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Subject } from 'rxjs/Subject';
 import { AsyncSubject } from 'rxjs/AsyncSubject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 // eggheader
 import { Observable }  from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
@@ -51,5 +50,4 @@ export class FlexchatAppComponent implements OnInit {
   changeLimit(limit) {
     this.limitSubject.next(parseInt(limit, 10));
   }
-  
 }
