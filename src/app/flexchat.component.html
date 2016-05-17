@@ -5,6 +5,9 @@
 
 <div class="chat-container">
   
+  <!-- egghead.io -->
+  <h1> {{clock | async }} </h1>
+ 
   <flexchat-message
     *ngFor="let message of messages | async"
     [message]="message">
@@ -13,3 +16,4 @@
 </div>
 
 <input-bar (sent)="addMessage($event)"></input-bar>
+

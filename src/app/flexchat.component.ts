@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FlexchatMessageComponent } from './flexchat-message'
 import { InputBarComponent } from './input-bar';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Subject } from 'rxjs/Subject';
+import { AsyncSubject } from 'rxjs/AsyncSubject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+// eggheader
+import { Observable }  from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
 
 @Component({
   moduleId: module.id,
@@ -15,11 +20,14 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
     InputBarComponent
   ]
 })
-export class FlexchatAppComponent {
+export class FlexchatAppComponent implements OnInit {
   
   messages: FirebaseListObservable<any[]>;
+  // limitSubject = new AsyncSubject<number>();
   limitSubject = new BehaviorSubject<number>(2);
   // limitSubject = new Subject<number>();
+  
+  clock = Observable.interval(1000);
   
   constructor(af: AngularFire) {
     this.messages = af.database.list('/messages', {
@@ -27,6 +35,13 @@ export class FlexchatAppComponent {
         limitToLast: this.limitSubject
       }
     });
+    // eggheader
+    this.clock.subscribe(console.log.bind(console));
+  }
+  
+  ngOnInit() {
+    console.log("ngOninit: ");
+    this.limitSubject.next(3);
   }
   
   addMessage(text) {
