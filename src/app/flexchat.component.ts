@@ -26,7 +26,7 @@ export class FlexchatAppComponent implements OnInit {
   limitSubject = new BehaviorSubject<number>(2);
   // limitSubject = new Subject<number>();
   
-  clock = Observable.interval(1000);
+  // clock = Observable.interval(1000);
   
   constructor(af: AngularFire) {
     this.messages = af.database.list('/messages', {
@@ -35,7 +35,7 @@ export class FlexchatAppComponent implements OnInit {
       }
     });
     // eggheader
-    this.clock.subscribe(console.log.bind(console));
+    // this.clock.subscribe(console.log.bind(console));
   }
   
   ngOnInit() {
